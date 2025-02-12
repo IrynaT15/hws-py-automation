@@ -11,9 +11,9 @@ for x in words:
     print(x + "ing")
 
 # Task 3: В строке “Ivanou Ivan” поменяйте местами слова => "Ivan Ivanou"
-str = "Ivanou Ivan"
-str = " ".join(str.split()[::-1])
-print("Task 3: ", str)
+str0 = "Ivanou Ivan"
+str0 = " ".join(str0.split()[::-1])
+print("Task 3: ", str0)
 
 # Task 4: Напишите программу которая удаляет пробел в начале, в конце строки
 str1 = " Alice in the Wonderland "
@@ -31,7 +31,7 @@ print("Task 5: ", proper_noun.title())
 str_to_list_1 = "Robin Singh"
 print("Task 6: ", type(str_to_list_1.split()), str_to_list_1.split())
 
-# Task 7: "I love arrays they are my favorite" => 
+# Task 7: "I love arrays they are my favorite" =>
 # ["I", "love", "arrays", "they", "are", "my", "favorite"]
 str_to_list_2 = "I love arrays they are my favorite"
 print("Task 7: ", type(str_to_list_2.split()), str_to_list_2.split())
@@ -42,11 +42,6 @@ list_1 = ["Ivan", "Ivanou"]
 str_1 = "Minsk"
 str_2 = "Belarus"
 print("Task 8: ", "Привет,", list_1[0], list_1[1] + "! ", "Добро пожаловать в ", str_1, str_2)
-print("Task 8: ", 
-      "Привет,", " ".join(list_1) + "! ", "Добро пожаловать в {}, {}".format(str_1, str_2))
-print("Task 8: ", 
-      "Привет,", " ".join(list_1) + "! ", 
-      "Добро пожаловать в {city}, {country}".format(city=str_1, country=str_2))
 print("Task 8: ", "Привет,", " ".join(list_1) + "! ", f"Добро пожаловать в {str_1}, {str_2}")
 
 # Task 9: Дан список ["I", "love", "arrays", "they", "are", "my", "favorite"]
@@ -62,4 +57,4 @@ list_3 = ["Honey", 15, [1, 2, 3], "old 3", 2*2,  "Item 6 To remove", {"a": "b"},
 print("Task 10: ", list_3)
 list_3.insert(3, "new 3")
 del list_3[6]
-print("Task 10: ",list_3)
+print("Task 10: ", list_3)
