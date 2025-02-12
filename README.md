@@ -1,2 +1,2 @@
-# hws-py-automation
-Homeworks for the Automation software testing with Python course 
+# pyjan2025
+Iryna Tainikava Python test automation course
