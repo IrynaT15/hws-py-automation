@@ -1,6 +1,5 @@
-
 # Time
-print("Task #1: 'Time'")
+print("--------Task #1: 'Time'--------")
 minutes_total = 808
 print(minutes_total, "minutes has passed starting from 00:00.")
 timer = [0, 0, 0, 0]
@@ -19,17 +18,16 @@ elif len(minutes) == 2:
     timer[2] = int(minutes[0])
     timer[3] = int(minutes[1])
 
+timer = [str(x) for x in timer]
 timer.insert(2, ":")
-current_time = "".join([str(x) for x in timer])
+current_time = "".join(timer)
 print("Current time: ", current_time)
 print("Sum of time numbers: ", timer[0] + timer[1] + timer[3] + timer[4])
 
 print()
-print("***************************")
-print()
 
 # Level Up (1)
-print("Task #2 (1): 'Level Up'")
+print("--------Task #2 (1): 'Level Up'--------")
 XP = 10
 threshold = 15
 reward = 3
@@ -37,34 +35,33 @@ print(XP + reward >= threshold)
 print()
 
 # Level Up (2)
-print("Task #2 (2): 'Level Up'")
+print("--------Task #2 (2): 'Level Up'--------")
 if XP+reward >= threshold:
     print("You have reached the next level!")
 else:
     print("You need", threshold - (XP+reward), "goal(s) to reach the next level.")
 
 print()
-print("***************************")
-print()
 
 # Time converter
-print("Task #3: 'Time converter'")
+print("--------Task #3: 'Time converter'--------")
 
-time24 = "00:01"
+time24 = "20:01"
+time12 = ""
 hours = time24[:2]
 if int(hours) == 00:
     hours = "12"
     time12 = hours + time24[2:] + " a.m."
 elif int(hours) < 12:
     if time24[0] == 0:
-        time12 = time24[1:] + " " + "a.m."
+        time12 = time24[1:] + " a.m."
     else:
-        time12 = time24[:] + " " + "a.m."
+        time12 = time24[:] + " a.m."
 elif int(hours) == 12:
     time12 = time24 + " p.m."
 elif int(hours) > 12:
-    hours = int(hours) - 12
-    time12 = str(hours) + time24[2:] + " p.m."
+    hours = str(int(hours) - 12)
+    time12 = hours + time24[2:] + " p.m."
 
-print("Time in 24-hour format: ", time24)
-print("Time in 12-hour format: ", time12)
+print("Time in 24-hour format:", time24)
+print("Time in 12-hour format:", time12)
