@@ -35,7 +35,7 @@ mm = time24_split[1]
 
 if hh >= 12:
     if hh > 12:
-        hh -= 12 
+        hh -= 12
     daytime = "p.m."
 else:
     if hh == 0:
