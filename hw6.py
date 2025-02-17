@@ -18,11 +18,11 @@ elif len(minutes) == 2:
     timer[2] = int(minutes[0])
     timer[3] = int(minutes[1])
 
-timer = [str(x) for x in timer]
-timer.insert(2, ":")
-current_time = "".join(timer)
+current_time = [str(x) for x in timer]
+current_time.insert(2, ":")
+current_time = "".join(current_time)
 print("Current time: ", current_time)
-print("Sum of time numbers: ", timer[0] + timer[1] + timer[3] + timer[4])
+print("Sum of time numbers: ", timer[0] + timer[1] + timer[2] + timer[3])
 
 print()
 
