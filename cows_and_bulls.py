@@ -7,60 +7,37 @@ while len(secret_number) < 4:
     if n not in secret_number:
         secret_number.append(n)
 secret_number = "".join(secret_number)
-#print("Secret number:", secret_number)
+# print("Secret number:", secret_number)
 
-print("""Try to guess the secret number!
-Remember! The number should consist only of 4 non-repeating digits.
-Good luck!""")
+print("Try to guess the secret number!\n"
+      "Remember!\nThe number should consist "
+      "only of 4 non-repeating digits.\nGood luck!")
 gamer_number = input("Enter your number: ")
 
 winner = 0
 while winner == 0:
-    if len(gamer_number) == 4:
-        if gamer_number.isdigit():
-            for i in gamer_number:
-                if gamer_number.count(i) == 1:
-                    True
-                else:
-                    print("The number should consist of non-repeating digits.")
-                    winner = 0
-                    gamer_number = input("Enter your number: ")
-            if gamer_number == secret_number:
-                winner = 1
-            else:
-                secret_number_list = [int(x) for x in secret_number]
-                gamer_number_list = [int(x) for x in gamer_number]
-                bull = 0
-                cow = 0
-                for x in gamer_number_list:
-                    for y in secret_number_list:
-                        if x == y:
-                            if gamer_number_list.index(x) == secret_number_list.index(y):
-                                bull += 1
-                            else:
-                                cow += 1
-                        if cow == 1:
-                            c = "cow"
-                        else:
-                            c = "cows"
-
-                        if bull == 1:
-                            b = "bull"
-                        else:
-                            b = "bulls"
-                print(cow, c, bull, b)
-                bull, cow = 0, 0
-                print("Try again!")
-                gamer_number = input("Enter your number: ")
-                winner = 0
+    if len(gamer_number) == 4 and gamer_number.isdigit() and len(gamer_number) == len(set(gamer_number)):
+        if gamer_number == secret_number:
+            winner = 1
         else:
-            print("The number should consist only of digits.")
-            winner = 0
+            secret_number_list = [int(x) for x in secret_number]
+            gamer_number_list = [int(x) for x in gamer_number]
+            bull = 0
+            cow = 0
+            for x in gamer_number_list:
+                for y in secret_number_list:
+                    if x == y:
+                        if gamer_number_list.index(x) == secret_number_list.index(y):
+                            bull += 1
+                        else:
+                            cow += 1
+            print(f"Your result: {cow} cows, {bull} bulls")
+            bull, cow = 0, 0
+            print("Try again!")
             gamer_number = input("Enter your number: ")
-
+            winner = 0
     else:
-        print("The number should consist of 4 digits.")
-        winner = 0
-        gamer_number = input("Enter your number: ")
+        print("Invalid number.")
+        gamer_number = input("Enter another number: ")
 
 print("You won!")
