@@ -18,12 +18,12 @@ gamer_number = input("Enter your number: ")
 
 winner = 0
 while winner == 0:
-    if len(gamer_number) == 4 and gamer_number.isdigit() and 
-    len(gamer_number) == len(set(gamer_number)):
-        if gamer_number == secret_number:
-            winner = 1
-        else:
-            secret_number_list = [int(x) for x in secret_number]
+    if (len(gamer_number) == 4 and gamer_number.isdigit() and
+       len(gamer_number) == len(set(gamer_number))):
+       if gamer_number == secret_number:
+           winner = 1
+       else:
+           secret_number_list = [int(x) for x in secret_number]
             gamer_number_list = [int(x) for x in gamer_number]
             bull = 0
             cow = 0
