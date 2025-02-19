@@ -12,10 +12,10 @@ secret_number = "".join(number)
 print("Try to guess the secret number!\n"
       "Remember!\nThe number should consist "
       "only of 4 non-repeating digits.\nGood luck!")
-gamer_number = input("Enter your number: ")
 
 winner = 0
 while winner == 0:
+    gamer_number = input("Enter your number: ")
     if (len(gamer_number) == 4 and gamer_number.isdigit() and
        len(gamer_number) == len(set(gamer_number))):
         if gamer_number == secret_number:
@@ -33,11 +33,8 @@ while winner == 0:
                         else:
                             cow += 1
             print(f"Your result: {cow} cows, {bull} bulls")
-            bull, cow = 0, 0
-            gamer_number = input("Try again! Enter your number: ")
             winner = 0
     else:
         print("Invalid number.")
-        gamer_number = input("Enter another number: ")
 
 print("You won!")
