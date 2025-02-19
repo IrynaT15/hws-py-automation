@@ -2,10 +2,12 @@
 import random
 n1 = str(random.randint(1, 9))
 secret_number = [n1]
+used_numbers = {n1}
 while len(secret_number) < 4:
     n = str(random.randint(0, 9))
-    if n not in secret_number:
+    if n not in used_numbers:
         secret_number.append(n)
+        used_numbers.add(n)
 secret_number = "".join(secret_number)
 # print("Secret number:", secret_number)
 
@@ -16,7 +18,8 @@ gamer_number = input("Enter your number: ")
 
 winner = 0
 while winner == 0:
-    if len(gamer_number) == 4 and gamer_number.isdigit() and len(gamer_number) == len(set(gamer_number)):
+    if len(gamer_number) == 4 and gamer_number.isdigit() and 
+    len(gamer_number) == len(set(gamer_number)):
         if gamer_number == secret_number:
             winner = 1
         else:
