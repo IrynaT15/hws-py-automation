@@ -5,6 +5,7 @@ def find_radially_opposite_position(n, f_number):
         number = f_number - n//2
     return number
 
+
 print(find_radially_opposite_position(10, 6))
 print(find_radially_opposite_position(10, 2))
 print(find_radially_opposite_position(10, 4))

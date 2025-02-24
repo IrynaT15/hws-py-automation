@@ -15,6 +15,7 @@ def strictly_increasing_sequence_if_delete_one_element(sequence):
                         count += 1
     return True
 
+
 print(strictly_increasing_sequence_if_delete_one_element([0]))
 print(strictly_increasing_sequence_if_delete_one_element([1, 1]))
 print(strictly_increasing_sequence_if_delete_one_element([1, 2, 3]))
