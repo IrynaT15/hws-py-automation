@@ -1,5 +1,6 @@
 def cache(func):
-    cached_values = dict()
+    cached_values = {}
+
     def wrapper(*args):
         if args in cached_values:
             return cached_values[args]
