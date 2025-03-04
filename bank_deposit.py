@@ -1,6 +1,6 @@
 class Bank_deposit:
     interest_rate = 0.1
-    clients_ids = []
+    clients_ids: list[str] = []
 
     def __init__(self):
         self.client_id = None
@@ -28,7 +28,8 @@ class Bank_deposit:
         self.years = years
         self.interest_frequency = interest_frequency
         self.is_deposit_open = True
-        return f"{self.client_id}: Success! Deposit account is opened. {self.start_balance} BYN for {self.years} years."
+        return (f"{self.client_id}: Success! Deposit account is opened. "
+                f"{self.start_balance} BYN for {self.years} years.")
 
     def calc_deposit_interest_rate(self, client_id):
         self.client_id = client_id
@@ -36,7 +37,10 @@ class Bank_deposit:
             return "Warning! Client not registered."
         if not self.is_deposit_open:
             return f"{self.client_id}: Warning! No open deposit account."
-        final_balance = self.start_balance * ((1 + Bank_deposit.interest_rate / self.interest_frequency) ** (self.interest_frequency * self.years))
+        final_balance = self.start_balance * (
+                (1 + Bank_deposit.interest_rate / self.interest_frequency) **
+                (self.interest_frequency * self.years)
+        )
         return f"Final balance: {round(final_balance, 2)}"
 
     def close_deposit(self, client_id):
