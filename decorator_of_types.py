@@ -26,4 +26,4 @@ def add_2(*args):
 
 
 print(add_2(5, 6, 7))
-print(add_3(0.1, 0.2, 0.4))
+print(add_2(0.1, 0.2, 0.4))
