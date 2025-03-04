@@ -19,17 +19,11 @@ print(add_1(5, 5))
 print(add_1("a", "b"))
 
 
-@typed(expected_type=int)
-def add_2(a, b, c):
-    return a + b + c
+# @typed(expected_type=int)
+@typed(expected_type=float)
+def add_2(*args):
+    return sum(args)
 
 
 print(add_2(5, 6, 7))
-
-
-@typed(expected_type=float)
-def add_3(a, b, c):
-    return a + b + c
-
-
 print(add_3(0.1, 0.2, 0.4))
