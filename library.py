@@ -1,51 +1,52 @@
 class Book:
+    is_reserved = False
+    is_given = False
 
     def __init__(self, book_name, author, num_pages, isbn):
         self.book_name = book_name
         self.author = author
         self.num_pages = num_pages
         self.isbn = isbn
-        self.is_reserved = False
-        self.is_given = False
         self.reserved_by = None
         self.given_to = None
 
     def __str__(self):
-        return f"Book name: '{self.book_name}', author: '{self.author}', pages: {self.num_pages}, isbn: {self.isbn}"
+        return (f"Book name: '{self.book_name}', author: '{self.author}', "
+                f"pages: {self.num_pages}, isbn: {self.isbn}")
 
     def reserve(self, reader_name):
-        if self.is_reserved:
+        if Book.is_reserved:
             return False
-        self.is_reserved = True
+        Book.is_reserved = True
         self.reserved_by = reader_name
         return True
 
     def cancel_reserve(self, reader_name):
-        if not self.is_reserved:
+        if not Book.is_reserved:
             return False
         if self.reserved_by == reader_name:
-            self.is_reserved = False
+            Book.is_reserved = False
             self.reserved_by = None
             return True
         else:
             return False
 
     def get_book(self, reader_name):
-        if self.is_given:
+        if Book.is_given:
             return False
-        if self.is_reserved:
+        if Book.is_reserved:
             if self.reserved_by != reader_name:
                 return False
-        self.is_given = True
-        self.is_reserved = False
+        Book.is_given = True
+        Book.is_reserved = False
         self.given_to = reader_name
         return True
 
     def return_book(self, reader_name):
-        if not self.is_given:
+        if not Book.is_given:
             return False
         if self.given_to == reader_name:
-            self.is_given = False
+            Book.is_given = False
             self.given_to = None
             return True
         else:
@@ -95,29 +96,30 @@ class Reader:
             return f"{book.isbn}: Warning! The book could not be returned by {self.name}."
 
 
-book = Book(book_name="The Hobbit", author="Books by J.R.R. Tolkien", num_pages=400, isbn="0006754023")
-print(book)
+book1 = Book(book_name="The Hobbit", author="Books by J.R.R. Tolkien",
+            num_pages=400, isbn="0006754023")
+print(book1)
 
 vasya = Reader("Vasya")
 petya = Reader("Petya")
 
-print(vasya.reserve_book(book))
-print(petya.reserve_book(book))
-print(vasya.reserve_book(book))
+print(vasya.reserve_book(book1))
+print(petya.reserve_book(book1))
+print(vasya.reserve_book(book1))
 print()
-print(petya.cancel_reserve(book))
-print(vasya.cancel_reserve(book))
-print(vasya.cancel_reserve(book))
+print(petya.cancel_reserve(book1))
+print(vasya.cancel_reserve(book1))
+print(vasya.cancel_reserve(book1))
 print()
-print(vasya.reserve_book(book))
+print(vasya.reserve_book(book1))
 print()
-print(petya.get_book(book))
-print(vasya.get_book(book))
-print(vasya.get_book(book))
+print(petya.get_book(book1))
+print(vasya.get_book(book1))
+print(vasya.get_book(book1))
 print()
-print(petya.reserve_book(book))
-print(petya.get_book(book))
+print(petya.reserve_book(book1))
+print(petya.get_book(book1))
 print()
-print(petya.return_book(book))
-print(vasya.return_book(book))
-print(vasya.return_book(book))
+print(petya.return_book(book1))
+print(vasya.return_book(book1))
+print(vasya.return_book(book1))
