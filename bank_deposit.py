@@ -39,7 +39,7 @@ class Bank_deposit:
                 (1 + Bank_deposit.interest_rate / self.interest_frequency) **
                 (self.interest_frequency * self.years)
         )
-        return f"Final balance: {round(final_balance, 2)}"
+        return round(final_balance, 2)
 
     def close_deposit(self, client_id):
         if client_id not in Bank_deposit.clients_ids:
