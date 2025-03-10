@@ -1,5 +1,6 @@
 import random
 
+
 class Card:
 
     value_list = ["2", "3", "4", "5", "6", "7",
@@ -17,17 +18,16 @@ class Card:
 class CardsDeck:
 
     def __init__(self):
-       self.deck_54 = self.compose_a_deck()
+        self.deck_54 = self.compose_a_deck()
 
     def __str__(self):
-        return f"{self.deck_54}"
+        return ', '.join(str(c) for c in self.deck_54)
 
     def compose_a_deck(self):
         self.deck_52 = []
-        for i in range(len(Card.value_list)):
-            for j in range(len(Card.suit_list)):
-                card = [Card.value_list[i], Card.suit_list[j]]
-                self.deck_52.append(card)
+        for value in Card.value_list:
+            for suit in Card.suit_list:
+                self.deck_52.append(Card(value, suit))
         self.deck_54 = self.deck_52 + ["Jocker"] * 2
         return self.deck_54
 
@@ -35,24 +35,23 @@ class CardsDeck:
         random.shuffle(self.deck_54)
         return self.deck_54
 
-    def get(self, card_number):
-        number_list = list(range(1, 55))
-        if card_number in number_list:
-            return self.deck_54[card_number-1]
+    def get(self, number):
+        if 1 <= number <= 54:
+            return f"Your card is {self.deck_54[number-1]}"
         else:
             return "Invalid card number"
+
 
 card1 = Card(2, "hearts")
 
 deck = CardsDeck()
 print(deck)
-print(deck.shuffle())
-card_number = int(input('Выберите карту из колоды в 54 карты:'))
+deck.shuffle()
+print(deck)
+card_number = int(input('Choose a card from 54-card deck:'))
 card = deck.get(card_number)
-print(f"Your card is {card}")
+print(card)
 
-card_number = int(input('Выберите карту из колоды в 54 карты:'))
+card_number = int(input('Choose a card from 54-card deck:'))
 card = deck.get(card_number)
-print(f"Your card is {card}")
-
-
+print(card)

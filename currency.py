@@ -1,5 +1,6 @@
 import json
 
+
 class Currency:
 
     def __init__(self, rates_file):
@@ -9,7 +10,7 @@ class Currency:
         return f"{self.get_currency_rate()}"
 
     def get_currency_rate(self):
-        with open(self.rates_file) as working_file:
+        with open(self.rates_file, encoding="utf-8") as working_file:
             working_data = json.load(working_file)
         return working_data
 
@@ -20,7 +21,7 @@ class CurrencyConverter(Currency):
         super().__init__(rates_file)
         self.rates_data = self.get_currency_rate()
 
-    def exchange_currency(self, currency_from, amount, currency_to = "BYN"):
+    def exchange_currency(self, currency_from, amount, currency_to="BYN"):
 
         if currency_from not in self.rates_data["currency_code"]:
             return f"The converter does not support {currency_from}"
@@ -33,8 +34,13 @@ class CurrencyConverter(Currency):
             rate_data = self.rates_data["currency_rate_eur"]
         elif currency_from == "USD":
             rate_data = self.rates_data["currency_rate_usd"]
+        else:
+            return f"Conversion rate for {currency_from} is not available."
 
         rate = rate_data[currency_to]
+        if rate is None:
+            return (f"Conversion rate from {currency_from}"
+                    f"to {currency_to} is not available.")
         converted_amount = round(amount * rate, 2)
 
         return converted_amount, currency_to
@@ -48,7 +54,6 @@ class Person:
 
     def __str__(self):
         return f"Convert {self.amount} {self.currency_from}"
-
 
 
 cur = Currency("currency_rates.json")
