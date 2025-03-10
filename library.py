@@ -105,8 +105,12 @@ class Reader:
                     f"by {self.name}.")
 
 
-book1 = Book(book_name="The Hobbit", author="Books by J.R.R. Tolkien",
-            num_pages=400, isbn="0006754023")
+book1 = Book(
+    book_name="The Hobbit",
+    author="Books by J.R.R. Tolkien",
+    num_pages=400,
+    isbn="0006754023"
+)
 print(book1)
 vasya = Reader("Vasya")
 petya = Reader("Petya")
