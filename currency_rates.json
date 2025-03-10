@@ -1,0 +1,22 @@
+{
+    "currency_code": [
+        "USD",
+        "EUR",
+        "BYN"
+    ],
+    "currency_rate_byn": {
+        "BYN": 1,
+        "EUR": 0.29,
+        "USD": 0.31
+    },
+    "currency_rate_eur": {
+        "BYN": 3.49,
+        "EUR": 1,
+        "USD": 1.08
+    },
+    "currency_rate_usd": {
+        "BYN": 3.27,
+        "EUR": 0.93,
+        "USD": 1
+    }
+}
