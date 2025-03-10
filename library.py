@@ -105,25 +105,20 @@ class Reader:
                     f"by {self.name}.")
 
 
-book = Book(book_name="The Hobbit", author="Books by J.R.R. Tolkien",
-            num_pages=400, isbn="0006754023")
-print(book)
 book1 = Book(book_name="The Hobbit", author="Books by J.R.R. Tolkien",
-             num_pages=400, isbn="00067540")
-print(book)
-
-
+            num_pages=400, isbn="0006754023")
+print(book1)
 vasya = Reader("Vasya")
 petya = Reader("Petya")
 
-print(vasya.reserve_book(book))
-print(vasya.reserve_book(book))
-print(petya.reserve_book(book))
-print(vasya.cancel_reserve(book))
-print(petya.reserve_book(book))
-print(vasya.reserve_book(book))
-print(vasya.get_book(book))
-print(petya.get_book(book))
-print(vasya.return_book(book))
-print(petya.return_book(book))
-print(vasya.get_book(book))
+print(vasya.reserve_book(book1))
+print(vasya.reserve_book(book1))
+print(petya.reserve_book(book1))
+print(vasya.cancel_reserve(book1))
+print(petya.reserve_book(book1))
+print(vasya.reserve_book(book1))
+print(vasya.get_book(book1))
+print(petya.get_book(book1))
+print(vasya.return_book(book1))
+print(petya.return_book(book1))
+print(vasya.get_book(book1))
