@@ -101,8 +101,8 @@ class Reader:
             self.given_book = None
             return f"{book.book_info['isbn']}: Success! The book is returned by {self.name}"
         else:
-            return f"{book.book_info['isbn']}: Warning! The book could not be returned
-            by {self.name}."
+            return (f"{book.book_info['isbn']}: Warning! The book could not be returned "
+                    f"by {self.name}.")
 
 
 book = Book(book_name="The Hobbit", author="Books by J.R.R. Tolkien",
