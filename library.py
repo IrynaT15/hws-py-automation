@@ -2,24 +2,24 @@ class Book:
 
     def __init__(self, book_name, author, num_pages, isbn):
         self.book_info = {
-            "book_name" : book_name,
-            "author" : author,
-            "num_pages" : num_pages,
-            "isbn" : isbn
+            "book_name": book_name,
+            "author": author,
+            "num_pages": num_pages,
+            "isbn": isbn
         }
 
         self.status = {
-            "is_reserved" : False,
-            "is_given" : False,
-            "reserved_by" : None,
-            "given_to" : None
+            "is_reserved": False,
+            "is_given": False,
+            "reserved_by": None,
+            "given_to": None
         }
 
     def __str__(self):
-        return (f"Book name: '{self.book_info["book_name"]}',"
-                f"author: '{self.book_info["author"]}',"
-                f"pages: {self.book_info["num_pages"]},"
-                f"isbn: {self.book_info["isbn"]}")
+        return (f"Book name: '{self.book_info['book_name']}',"
+                f"author: '{self.book_info['author']}',"
+                f"pages: {self.book_info['num_pages']},"
+                f"isbn: {self.book_info['isbn']}")
 
     def reserve(self, reader_name):
         if self.status["is_reserved"]:
@@ -39,7 +39,7 @@ class Book:
             return False
 
     def get_book(self, reader_name):
-        if  self.status["is_given"]:
+        if self.status["is_given"]:
             return False
         if self.status["is_reserved"]:
             if self.status["reserved_by"] != reader_name:
@@ -101,12 +101,15 @@ class Reader:
             self.given_book = None
             return f"{book.book_info['isbn']}: Success! The book is returned by {self.name}"
         else:
-            return f"{book.book_info['isbn']}: Warning! The book could not be returned by {self.name}."
+            return f"{book.book_info['isbn']}: Warning! The book could not be returned
+            by {self.name}."
 
 
-book = Book(book_name="The Hobbit", author="Books by J.R.R. Tolkien", num_pages=400, isbn="0006754023")
+book = Book(book_name="The Hobbit", author="Books by J.R.R. Tolkien",
+            num_pages=400, isbn="0006754023")
 print(book)
-book1 = Book(book_name="The Hobbit", author="Books by J.R.R. Tolkien", num_pages=400, isbn="00067540")
+book1 = Book(book_name="The Hobbit", author="Books by J.R.R. Tolkien",
+             num_pages=400, isbn="00067540")
 print(book)
 
 
