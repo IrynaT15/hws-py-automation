@@ -20,6 +20,7 @@ def read_file(filename):
             return file.readlines()
     except FileNotFoundError:
         print(f"File '{filename}.txt' not found.")
+        return None
 
 
 def process_line_to_get_group_and_marks(line):
@@ -32,7 +33,7 @@ def process_line_to_get_group_and_marks(line):
         print(f"Invalid line format. Line is skipped: {line}")
         return None
 
-    name, group, marks_str = match.groups()
+    _, group, marks_str = match.groups()
 
     try:
         marks = list(map(int, marks_str.split(",")))
@@ -52,7 +53,7 @@ def calculate_group_averages(group_counts, group_av_marks):
 def generate_summary(total_students, group_counts, group_av_marks):
     summary = [f"Total number of students: {total_students}\n"]
     for group, value in group_counts.items():
-        group_students, group_marks = value
+        group_students, _ = value
         summary.append(f"Group {group}: {group_students} students, "
                        f"average mark {group_av_marks[group]}\n")
 

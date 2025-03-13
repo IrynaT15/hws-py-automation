@@ -2,10 +2,10 @@ import re
 
 
 def check_password(password):
-    if (len(password) >= 4 and
-        re.search("[A-Z]", password) and
-        re.search("[a-z]", password) and
-        re.search(r"\d", password)):
+    if (len(password) >= 4
+            and re.search("[A-Z]", password)
+            and re.search("[a-z]", password)
+            and re.search(r"\d", password)):
         return f"{password} Good password"
     return f"{password} Bad password"
 
