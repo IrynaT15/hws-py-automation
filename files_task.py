@@ -3,94 +3,94 @@ import re
 
 def create_if_not_exist_txt_file(filename):
     try:
-        with open(f"{filename}.txt", "x") as file:
+        with open(f"{filename}.txt", "x", encoding="utf-8"):
             pass
     except FileExistsError:
         print(f"File '{filename}.txt' already exists.")
-    except Exception as e:
-        print(f"Error for file creation: {e}")
 
 
 def write_multiple_lines_txt_file(filename, text_in_lines):
+    with open(f"{filename}.txt", "w", encoding="utf-8") as file:
+        file.writelines(text_in_lines)
+
+
+def read_file(filename):
     try:
-        with open(f"{filename}.txt", "w") as file:
-            file.writelines(text_in_lines)
-    except Exception as e:
-        print(f"Error for file writing: {e}")
+        with open(f"{filename}.txt", encoding="utf-8") as file:
+            return file.readlines()
+    except FileNotFoundError:
+        print(f"File '{filename}.txt' not found.")
+
+
+def process_line_to_get_group_and_marks(line):
+    line = line.strip()
+    if not line:
+        return None
+
+    match = re.match(r"^(.+), Group (\d+), Marks: (.+)$", line)
+    if not match:
+        print(f"Invalid line format. Line is skipped: {line}")
+        return None
+
+    name, group, marks_str = match.groups()
+
+    try:
+        marks = list(map(int, marks_str.split(",")))
+    except ValueError:
+        print(f"Invalid marks format. Line is skipped: {marks_str}")
+        return None
+
+    return group, marks
+
+
+def calculate_group_averages(group_counts, group_av_marks):
+    for group, value in group_counts.items():
+        group_students, group_marks = value
+        group_av_marks[group] = round(group_marks / group_students, 2)
+
+
+def generate_summary(total_students, group_counts, group_av_marks):
+    summary = [f"Total number of students: {total_students}\n"]
+    for group, value in group_counts.items():
+        group_students, group_marks = value
+        summary.append(f"Group {group}: {group_students} students, "
+                       f"average mark {group_av_marks[group]}\n")
+
+    return summary
 
 
 def read_and_process_txt_file(filename):
-    try:
-        with open(f"{filename}.txt") as file:
-            text = file.readlines()
-    except FileNotFoundError:
-        print(f"File '{filename}.txt' not found.")
-    except Exception as e:
-        print(f"Error for file reading: {e}")
+    lines = read_file(filename)
+    if not lines:
+        return None
 
     total_students = 0
     group_counts = {}
     group_av_marks = {}
 
-    for line in text:
-        line = line.strip()
-        if not line:
-            continue
+    for line in lines:
+        result = process_line_to_get_group_and_marks(line)
+        if result:
+            group, marks = result
+            total_students += 1
+            marks_st = sum(marks)
+            av_marks = round(marks_st / len(marks), 2)
+            if group in group_counts:
+                group_counts[group][0] += 1
+                group_counts[group][1] += av_marks
+            else:
+                group_counts[group] = [1, av_marks]
 
-        match = re.match(r"^(.+), Group (\d+), Marks: (.+)$", line)
-        if not match:
-            print(f"Invalid line format. Line is skipped: {line}")
-            continue
+    calculate_group_averages(group_counts, group_av_marks)
 
-        line = line.split(", ")
-
-        if len(line) != 3:
-            print(f"Invalid line format: {line}")
-            continue
-
-        marks =line[2].replace('Marks: ', '')
-
-        try:
-            marks = list(map(int, marks.split(",")))
-        except ValueError:
-            print(f"Invalid marks format. Line is skipped: {marks}")
-            continue
-
-        total_students += 1
-
-        marks_st = sum(marks)
-        av_marks_st = round(marks_st / len(marks), 2)
-
-        for char in line[1]:
-            if char.isnumeric():
-                group_number = "".join(char)
-
-                if group_number in group_counts:
-                    group_counts[group_number][0] += 1
-                    group_counts[group_number][1] += av_marks_st
-                else:
-                    group_counts[group_number] = [1, av_marks_st]
-
-    for group, value in group_counts.items():
-        group_students, group_marks = value
-        group_av_marks[group] = round(group_marks / group_students, 2)
-
-    summary = [f"Total number of students: {total_students}\n"]
-    for group, value in group_counts.items():
-        group_students, group_marks = value
-        summary.append(f"Group {group}: {group_students} students,"
-                       f"average mark {group_av_marks[group]}\n")
-
+    summary = generate_summary(total_students, group_counts, group_av_marks)
     print(summary)
     return summary
 
 
 def add_summary_to_txt_file(filename, summary):
-    try:
-        with open(f"{filename}.txt", "a") as file:
-            file.writelines(summary)
-    except Exception as e:
-        print(f"Error writing to file: {e}")
+    with open(f"{filename}.txt", "a", encoding="utf-8") as file:
+        file.writelines(summary)
 
 
 # create_if_not_exist_txt_file("students")

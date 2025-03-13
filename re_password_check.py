@@ -5,7 +5,7 @@ def check_password(password):
     if (len(password) >= 4 and
         re.search("[A-Z]", password) and
         re.search("[a-z]", password) and
-        re.search("\d", password)):
+        re.search(r"\d", password)):
         return f"{password} Good password"
     return f"{password} Bad password"
 
@@ -23,5 +23,5 @@ def check_password(password):
 # print(check_password("a"))
 # print(check_password(""))
 
-password = input("Enter your password to check if it's correct: ")
-print(check_password(password))
+password1 = input("Enter your password to check if it's correct: ")
+print(check_password(password1))

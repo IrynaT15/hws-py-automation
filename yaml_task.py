@@ -3,12 +3,12 @@ import yaml
 
 def read_and_append_yaml_data_with_multiple_blocks(filename, new_item):
 
-    with open(f"{filename}.yaml", "r") as f:
+    with open(f"{filename}.yaml", "r", encoding="utf-8") as f:
         data = yaml.safe_load_all(f)
         loaded_data = list(data)
         loaded_data.append(new_item)
 
-    with open(f"{filename}.yaml", "w") as f:
+    with open(f"{filename}.yaml", "w", encoding="utf-8") as f:
         yaml.dump_all(loaded_data, f)
 
 
