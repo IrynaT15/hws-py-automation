@@ -56,10 +56,10 @@ def read_and_display_club_with_max_wins(filename):
 clubs_with_max_wins = read_and_display_club_with_max_wins("clubs_info")
 
 if clubs_with_max_wins:
-    print(f"Clubs with most wins:\n")
+    print("Clubs with most wins:\n")
     for club in clubs_with_max_wins:
-        print(f"Club: {club["name"]}")
-        print(f"Country: {club["country"]}")
-        print(f"Number of wins: {club["wins"]}\n")
+        print(f"Club: {club['name']}")
+        print(f"Country: {club['country']}")
+        print(f"Number of wins: {club['wins']}\n")
 else:
     print("No clubs with most wins")
