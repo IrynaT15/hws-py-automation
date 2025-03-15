@@ -1,8 +1,3 @@
-# Создайте программу, которая будет запрашивать у пользователя
-# две даты в формате "ГГГГ-ММ-ДД".
-# Вычислите и выведите на экран количество дней между этими датами.
-# Подсказка: используйте функцию relativedelta из модуля dateutil.
-
 from dateutil.relativedelta import relativedelta
 from dateutil.parser import parse
 
