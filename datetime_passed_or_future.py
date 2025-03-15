@@ -13,7 +13,7 @@ def is_future_or_passed_date(date_to_check):
     if date_ymd < current_date:
         return f"{date_to_check} is a passed date. Current date is {current_date}"
     elif date_ymd > current_date:
-       return f"{date_to_check} is a future date. Current date is {current_date}"
+        return f"{date_to_check} is a future date. Current date is {current_date}"
     return f"{date_to_check} is today"
 
 

@@ -70,7 +70,7 @@ def get_user_comment():
 def save_comment():
     save_input = input("Enter SAVE to save the comment:").strip()
     while not save_input.lower() == "save":
-        logger.error(f"Saving failed. Input field: save_input. User input: %s", save_input)
+        logger.error("Saving failed. Input field: save_input. User input: %s", save_input)
         save_input = input("Enter SAVE to save the comment:").strip()
     logger.info("Comment saved. Input field: save_input. User input: %s", save_input)
     print("Your comment is successfully saved")

@@ -16,7 +16,7 @@ def setup_log_day_timed_rotation():
 
     handler = TimedRotatingFileHandler(
         "file.log",
-        when ="d",
+        when="d",
         interval=1,
         backupCount=7,
         encoding="utf-8"
