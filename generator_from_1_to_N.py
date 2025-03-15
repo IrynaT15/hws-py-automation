@@ -9,7 +9,7 @@ def generate_numbers_from_1_to_N(quantity):
     while quantity > 0:
         number += 1
         yield number
-        quantity -=1
+        quantity -= 1
 
 
 N = input("Enter number: ")
