@@ -8,11 +8,11 @@ from typing import List, Tuple
 
 
 class OrderStatus(Enum):
-    PENDING: Tuple[int, List[str]] = (1, ["IN_PROGRESS", "CANCELLED"])
-    IN_PROGRESS: Tuple[int, List[str]] = (2, ["READY", "CANCELLED"])
-    READY: Tuple[int, List[str]] = (3, ["COMPLETED", "CANCELLED"])
-    COMPLETED: Tuple[int, List[str]] = (4, [])
-    CANCELLED: Tuple[int, List[str]] = (5, [])
+    PENDING = (1, ["IN_PROGRESS", "CANCELLED"])
+    IN_PROGRESS = (2, ["READY", "CANCELLED"])
+    READY = (3, ["COMPLETED", "CANCELLED"])
+    COMPLETED = (4, [])
+    CANCELLED = (5, [])
 
     def __init__(self, num, status):
         self.num = num

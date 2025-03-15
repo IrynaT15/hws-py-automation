@@ -6,7 +6,7 @@
 def prime_numbers_generator(start, end):
     not_prime_numbers_list = []
     for number in range(start, end+1):
-        if number in(2, 3):
+        if number in (2, 3):
             yield number
         if number > 3:
             for i in range(2, number):
