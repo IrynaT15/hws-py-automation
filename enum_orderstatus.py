@@ -4,7 +4,6 @@
 # Содержит метод display_status(), который выводит текущий статус заказа.
 
 from enum import Enum
-from typing import List, Tuple
 
 
 class OrderStatus(Enum):
