@@ -7,11 +7,11 @@ from enum import Enum
 
 
 class OrderStatus(Enum):
-    PENDING = (1, ["IN_PROGRESS", "CANCELLED"])
-    IN_PROGRESS = (2, ["READY", "CANCELLED"])
-    READY = (3, ["COMPLETED", "CANCELLED"])
-    COMPLETED = (4, [])
-    CANCELLED = (5, [])
+    PENDING = (1, ["IN_PROGRESS", "CANCELLED"])  # type: ignore
+    IN_PROGRESS = (2, ["READY", "CANCELLED"])  # type: ignore
+    READY = (3, ["COMPLETED", "CANCELLED"])  # type: ignore
+    COMPLETED = (4, [])  # type: ignore
+    CANCELLED = (5, [])  # type: ignore
 
     def __init__(self, num, status):
         self.num = num
