@@ -1,8 +1,3 @@
-# Создайте генераторную функцию,
-# которая генерирует все простые числа в заданном диапазоне.
-# Выведите первые 10 простых чисел из этого диапазона.
-
-
 def prime_numbers_generator(start, end):
     not_prime_numbers_list = []
     for number in range(start, end+1):
