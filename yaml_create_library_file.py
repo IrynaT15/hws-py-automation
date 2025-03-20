@@ -38,5 +38,5 @@ books = [
      }
 ]
 
-
-create_and_read_yaml_file_with_multiple_blocks("library", books)
+file_name = "library"
+create_and_read_yaml_file_with_multiple_blocks(file_name, books)

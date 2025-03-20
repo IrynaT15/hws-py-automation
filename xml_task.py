@@ -1,40 +1,26 @@
 import xml.etree.ElementTree as ET
 
 
-data = ET.Element("Goods")
-element1 = ET.SubElement(data, "Item1")
-element1.set("title", "Coffee 'Coffee'")
-element1.set("price", "17.49")
-element1.set("number", "5")
+class GoodsXML:
 
-element2 = ET.SubElement(data, "Item2")
-element2.set("title", "Tea 'Tea'")
-element2.set("price", "7.12")
-element2.set("number", "15")
+    def __init__(self, file_name):
+        self.file_name = file_name
+        self.data = ET.Element("Goods")
 
-element3 = ET.SubElement(data, "Item3")
-element3.set("title", "Juice 'Juice'")
-element3.set("price", "5.00")
-element3.set("number", "13")
+    def add_items(self, item_id, title, price, number):
+        item = ET.SubElement(self.data, item_id)
+        item.set("title", title)
+        item.set("price", str(price))
+        item.set("number", str(number))
 
-element4 = ET.SubElement(data, "Item4")
-element4.set("title", "Milk 'Milk'")
-element4.set("price", "4.60")
-element4.set("number", "20")
-
-element5 = ET.SubElement(data, "Item5")
-element5.set("title", "Water 'Water'")
-element5.set("price", "2.30")
-element5.set("number", "50")
-
-b_xml = ET.tostring(data)
-
-with open("goods.xml", "wb") as f:
-    f.write(b_xml)
+    def save_to_xml(self):
+        b_xml = ET.tostring(self.data)
+        with open(self.file_name, "wb") as f:
+            f.write(b_xml)
 
 
-def total_price_of_goods_from_xml(file, price_att, number_att):
-    tree = ET.parse(file)
+def total_price_of_goods_from_xml(file_name, price_att, number_att):
+    tree = ET.parse(file_name)
     root = tree.getroot()
 
     total_cost = 0
@@ -46,5 +32,15 @@ def total_price_of_goods_from_xml(file, price_att, number_att):
 
     return f"Total cost of all items: {total_cost}"
 
+
+goods_xml = GoodsXML("goods.xml")
+
+goods_xml.add_items("Item1", "Coffee 'Coffee'", 17.49, 5)
+goods_xml.add_items("Item2", "Tea 'Tea'", 7.12, 15)
+goods_xml.add_items("Item3", "Juice 'Juice'", 5.00, 13)
+goods_xml.add_items("Item4", "Milk 'Milk'", 4.60, 20)
+goods_xml.add_items("Item5", "Water 'Water'", 2.30, 50)
+
+goods_xml.save_to_xml()
 
 print(total_price_of_goods_from_xml("goods.xml", "price", "number"))

@@ -94,17 +94,16 @@ def add_summary_to_txt_file(filename, summary):
         file.writelines(summary)
 
 
-# create_if_not_exist_txt_file("students")
-# text_in_lines = ["Ivan Ivanov, Group 1, Marks: 5,4,4,5,3,5\n",
-#                  "Petr Petrov, Group 2, Marks: 4,5,4,3,5,5\n",
-#                  "Andrey Andreev, Group 1, Marks: 3,4,4,4,5,3\n",
-#                  "Alena Ivanova, Group 3, Marks: 5,5,4,4,3,5\n",
-#                  "Petra Petrova, Group 3, Marks: 4,5,3,3,5,5\n",
-#                  "Ada Andreeva, Group 2, Marks: 5,3,4,4,4,3\n",
-#                  "Adriana Chill, Group 1, Marks: 4,2,3,3,3,5\n",
-#                  "Linda Perk, Group 4, Marks: 5,3,5,4,4,5\n"]
-#
-# write_multiple_lines_txt_file("students", text_in_lines)
-# summary1 = read_and_process_txt_file("students")
-#
-# add_summary_to_txt_file("students", summary1)
+create_if_not_exist_txt_file("students")
+text_in_lines = ["Ivan Ivanov, Group 1, Marks: 5,4,4,5,3,5\n",
+                 "Petr Petrov, Group 2, Marks: 4,5,4,3,5,5\n",
+                 "Andrey Andreev, Group 1, Marks: 3,4,4,4,5,3\n",
+                 "Alena Ivanova, Group 3, Marks: 5,5,4,4,3,5\n",
+                 "Petra Petrova, Group 3, Marks: 4,5,3,3,5,5\n",
+                 "Ada Andreeva, Group 2, Marks: 5,3,4,4,4,3\n",
+                 "Adriana Chill, Group 1, Marks: 4,2,3,3,3,5\n",
+                 "Linda Perk, Group 4, Marks: 5,3,5,4,4,5\n"]
+
+write_multiple_lines_txt_file("students", text_in_lines)
+summary1 = read_and_process_txt_file("students")
+add_summary_to_txt_file("students", summary1)
