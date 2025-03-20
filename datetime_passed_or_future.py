@@ -1,7 +1,7 @@
 from datetime import datetime, date
 
 
-def is_future_or_passed_date(date_to_check):
+def check_if_date_is_future(date_to_check):
     date_full = datetime.strptime(date_to_check, '%Y-%m-%d')
     date_ymd = datetime.date(date_full)
     current_date = date.today()
@@ -13,5 +13,5 @@ def is_future_or_passed_date(date_to_check):
 
 
 date3 = input("Enter Date (YYYY-MM-DD):")
-b = is_future_or_passed_date(date3)
+b = check_if_date_is_future(date3)
 print(b)
