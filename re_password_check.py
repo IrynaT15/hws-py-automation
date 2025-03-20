@@ -25,4 +25,4 @@ if __name__ == "__main__":
     assert check_password("Aa") == "Bad password"
     assert check_password("A") == "Bad password"
     assert check_password("a") == "Bad password"
-    assert check_password( "") == "Bad password"
+    assert check_password("") == "Bad password"
