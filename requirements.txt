@@ -4,3 +4,5 @@ mypy
 ruff
 pylint
 pyyaml
+pytest==8.3.5
+pytest-html
