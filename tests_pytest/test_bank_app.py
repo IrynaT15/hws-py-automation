@@ -31,13 +31,15 @@ def test_register_client_success(bank, configure_logger):
     assert bank.client_id == "001"
     assert bank.client_name == "Name1"
     assert "001" in bank.clients_ids
-    logger.info(f"A new client is registered. Client id: {bank.client_id}. Client name: {bank.client_name}")
+    logger.info(f"A new client is registered. "
+                f"Client id: {bank.client_id}. Client name: {bank.client_name}")
 
 
 def test_register_client_fail_existing_client_id(bank, client, configure_logger):
     logger = configure_logger
     assert bank.register_client("001", "Name1") == "001: Warning! Client is already registered"
-    logger.warning(f"Warning! The client is not registered. Reason: Client id {bank.client_id} already exists.")
+    logger.warning(f"Warning! The client is not registered. "
+                   f"Reason: Client id {bank.client_id} already exists.")
 
 
 def test_open_deposit_account_success(bank, client, configure_logger):
@@ -47,7 +49,7 @@ def test_open_deposit_account_success(bank, client, configure_logger):
     assert bank.start_balance == 1000
     assert bank.years == 5
     assert bank.interest_frequency == 12
-    assert bank.is_deposit_open == True
+    assert bank.is_deposit_open is True
     logger.info(f"A registered client has opened a deposit. "
                 f"Client id {bank.client_id}. "
                 f"Start balance: {bank.start_balance}. "
@@ -62,11 +64,13 @@ def test_open_deposit_account_fail_not_registered_client(bank, client, configure
     logger.warning("Warning! A deposit is not opened. Reason: ClientId is not registered.")
 
 
-def test_open_deposit_account_fail_client_already_has_deposit(bank, client, deposit, configure_logger):
+def test_open_deposit_account_fail_client_already_has_deposit(
+        bank, client, deposit, configure_logger):
     logger = configure_logger
     assert (bank.open_deposit_account("001", 2000, 10, 12) ==
             "001: Warning! Client has an open deposit.")
-    logger.warning(f"Warning! A deposit is not opened. Reason: ClientId {bank.client_id} has an open deposit.")
+    logger.warning(f"Warning! A deposit is not opened. "
+                   f"Reason: ClientId {bank.client_id} has an open deposit.")
 
 
 def test_open_deposit_account_fail_negative_balance(bank, client, configure_logger):
@@ -74,7 +78,8 @@ def test_open_deposit_account_fail_negative_balance(bank, client, configure_logg
     assert (bank.open_deposit_account("001", -100, 1, 12) ==
             "Warning! Invalid start balance.")
     assert bank.is_deposit_open is False
-    logger.warning("Warning! A deposit is not opened. Reason: Invalid start balance. Start balance: -100")
+    logger.warning("Warning! A deposit is not opened. "
+                   "Reason: Invalid start balance. Start balance: -100")
 
 
 def test_open_deposit_account_fail_zero_balance(bank, client, configure_logger):
@@ -82,7 +87,8 @@ def test_open_deposit_account_fail_zero_balance(bank, client, configure_logger):
     assert (bank.open_deposit_account("001", 0, 1, 12) ==
             "Warning! Invalid start balance.")
     assert bank.is_deposit_open is False
-    logger.warning("Warning! A deposit is not opened. Reason: Invalid start balance. Start balance: 0")
+    logger.warning("Warning! A deposit is not opened. "
+                   "Reason: Invalid start balance. Start balance: 0")
 
 
 def test_calc_deposit_interest_rate_success(bank, client, deposit, configure_logger):
