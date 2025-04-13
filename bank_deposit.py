@@ -23,8 +23,6 @@ class Bank_deposit:
             return "Warning! Client not registered."
         if self.is_deposit_open:
             return f"{client_id}: Warning! Client has an open deposit."
-        if start_balance <= 0:
-            return "Warning! Invalid start balance."
         self.start_balance = start_balance
         self.years = years
         self.interest_frequency = interest_frequency
@@ -51,3 +49,15 @@ class Bank_deposit:
         self.interest_frequency = 0
         self.is_deposit_open = False
         return f"{client_id}: Success! Deposit account is closed"
+
+
+bank = Bank_deposit()
+print(bank.register_client("0000001", "Iryna Tain"))
+print(bank.open_deposit_account("0000002", 1000, 1, 12))
+print(bank.open_deposit_account("0000001", 1000, 1, 12))
+print(bank.open_deposit_account("0000001", 1000, 1, 12))
+print(bank.calc_deposit_interest_rate("0000001"))
+print(bank.calc_deposit_interest_rate("0000002"))
+print(bank.close_deposit("0000001"))
+print(bank.close_deposit("0000002"))
+print(bank.register_client("0000001", "Iryna Tain"))
