@@ -46,7 +46,7 @@ class Book:
                 return False
         self.status["is_given"] = True
         self.status["is_reserved"] = False
-        self.status["given_to"] = reader_name
+        self.status["is_given"] = reader_name
         return True
 
     def return_book(self, reader_name):
@@ -103,3 +103,26 @@ class Reader:
         else:
             return (f"{book.book_info['isbn']}: Warning! The book could not be returned "
                     f"by {self.name}.")
+
+
+book1 = Book(
+    book_name="The Hobbit",
+    author="Books by J.R.R. Tolkien",
+    num_pages=400,
+    isbn="0006754023"
+)
+print(book1)
+vasya = Reader("Vasya")
+petya = Reader("Petya")
+
+print(vasya.reserve_book(book1))
+print(vasya.reserve_book(book1))
+print(petya.reserve_book(book1))
+print(vasya.cancel_reserve(book1))
+print(petya.reserve_book(book1))
+print(vasya.reserve_book(book1))
+print(vasya.get_book(book1))
+print(petya.get_book(book1))
+print(vasya.return_book(book1))
+print(petya.return_book(book1))
+print(vasya.get_book(book1))
