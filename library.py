@@ -72,12 +72,12 @@ class Reader:
 
     def reserve_book(self, book):
         if self.reserved_book is not None:
-            return f"{book.book_info['isbn']}: Warning! {self.name} already has a reserved book."
+            return f"{book.book_info['isbn']}: Warning! {self.name} already has a reserved book"
         if book.reserve(self.name):
             self.reserved_book = book
             return f"{book.book_info['isbn']}: Success! Reservation for {self.name} is completed"
         else:
-            return (f"{book.book_info['isbn']}: Warning! The book is already reserved by"
+            return (f"{book.book_info['isbn']}: Warning! The book is already reserved by "
                     f"{book.status['reserved_by']}")
 
     def cancel_reserve(self, book):
@@ -94,7 +94,7 @@ class Reader:
             self.given_book = book
             return f"{book.book_info['isbn']}: Success! The book can be given to {self.name}"
         else:
-            return f"{book.book_info['isbn']}: Warning! The book cannot be given to {self.name}."
+            return f"{book.book_info['isbn']}: Warning! The book cannot be given to {self.name}"
 
     def return_book(self, book):
         if book.return_book(self.name):
@@ -103,26 +103,3 @@ class Reader:
         else:
             return (f"{book.book_info['isbn']}: Warning! The book could not be returned "
                     f"by {self.name}.")
-
-
-book1 = Book(
-    book_name="The Hobbit",
-    author="Books by J.R.R. Tolkien",
-    num_pages=400,
-    isbn="0006754023"
-)
-print(book1)
-vasya = Reader("Vasya")
-petya = Reader("Petya")
-
-print(vasya.reserve_book(book1))
-print(vasya.reserve_book(book1))
-print(petya.reserve_book(book1))
-print(vasya.cancel_reserve(book1))
-print(petya.reserve_book(book1))
-print(vasya.reserve_book(book1))
-print(vasya.get_book(book1))
-print(petya.get_book(book1))
-print(vasya.return_book(book1))
-print(petya.return_book(book1))
-print(vasya.get_book(book1))
