@@ -46,7 +46,7 @@ class Book:
                 return False
         self.status["is_given"] = True
         self.status["is_reserved"] = False
-        self.status["given_to"] = reader_name
+        self.status["is_given"] = reader_name
         return True
 
     def return_book(self, reader_name):
@@ -102,3 +102,5 @@ class Reader:
             return f"{book.book_info['isbn']}: Success! The book is returned by {self.name}"
         else:
             return (f"{book.book_info['isbn']}: Warning! The book could not be returned "
+                    f"by {self.name}.")
+          
