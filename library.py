@@ -102,4 +102,3 @@ class Reader:
             return f"{book.book_info['isbn']}: Success! The book is returned by {self.name}"
         else:
             return (f"{book.book_info['isbn']}: Warning! The book could not be returned "
-                    f"by {self.name}")
