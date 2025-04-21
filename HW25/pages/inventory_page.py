@@ -1,3 +1,4 @@
+from selenium.common import NoSuchElementException
 from ..pages.base_page import BasePage
 from ..pages.cart_page import CartPage
 from ..test_data.env import Env
@@ -25,7 +26,7 @@ class InventoryPage(BasePage):
         try:
             cart_badge_text = self.driver.find_element(*self.cart_badge).text
             return cart_badge_text == number
-        except:
+        except NoSuchElementException:
             return False
 
     def is_add_product_button_removed(self):

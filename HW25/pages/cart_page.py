@@ -23,5 +23,6 @@ class CartPage(BasePage):
 
     def is_navigate_to_checkout_step_one_successful(self):
         url_check = self.is_url_correct(Env.URL_CheckoutOne)
-        title_check = self.is_element_text_correct(self.redirect_page_title, 'Checkout: Your Information')
+        title_check = self.is_element_text_correct(self.redirect_page_title,
+                                                   'Checkout: Your Information')
         return url_check and title_check
