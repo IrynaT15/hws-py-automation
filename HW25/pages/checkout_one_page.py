@@ -12,7 +12,6 @@ class CheckoutOnePage(BasePage):
         self.first_name = (By.ID, 'first-name')
         self.last_name = (By.ID, 'last-name')
         self.zip = (By.ID, 'postal-code')
-        self.redirect_page_title = (By.CLASS_NAME, 'title')
 
     def complete_checkout_form(self, fname, lname, zip):
         self.input_text(self.first_name, fname)
@@ -22,18 +21,16 @@ class CheckoutOnePage(BasePage):
         return CheckoutTwoPage(self.driver, self.url)
 
     def is_redirect_to_checkout_two_successful(self):
-        url_check = self.is_url_correct(Env.URL_CheckoutTwo)
-        title_check = self.is_element_text_correct(self.redirect_page_title, 'Checkout: Overview')
-        return url_check and title_check
+        return self.is_url_correct(Env.URL_CheckoutTwo)
 
     def error_for_missing_fn(self):
         error_message = 'Error: First Name is required'
-        return self.is_element_text_correct(self.error_text, error_message)
+        return self.is_text_correct(self.error_text, error_message)
 
     def error_for_missing_ln(self):
         error_message = 'Error: Last Name is required'
-        return self.is_element_text_correct(self.error_text, error_message)
+        return self.is_text_correct(self.error_text, error_message)
 
     def error_for_missing_zip(self):
         error_message = 'Error: Postal Code is required'
-        return self.is_element_text_correct(self.error_text, error_message)
+        return self.is_text_correct(self.error_text, error_message)

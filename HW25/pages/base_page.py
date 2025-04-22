@@ -1,4 +1,6 @@
 from selenium.common import NoSuchElementException
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
 
 class BasePage:
@@ -9,8 +11,10 @@ class BasePage:
     def open(self):
         self.driver.get(self.url)
 
-    def click_button(self, locator):
-        button = self.driver.find_element(*locator)
+    def click_button(self, locator, timeout=5):
+        button = WebDriverWait(self.driver, timeout).until(
+            EC.element_to_be_clickable(locator)
+        )
         button.click()
 
     def input_text(self, locator, text):
@@ -28,5 +32,5 @@ class BasePage:
         except NoSuchElementException:
             return False
 
-    def is_element_text_correct(self, locator, text):
+    def is_text_correct(self, locator, text):
         return self.driver.find_element(*locator).text == text

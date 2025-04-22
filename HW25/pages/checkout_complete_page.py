@@ -10,7 +10,7 @@ class CheckoutCompletePage(BasePage):
         self.back_home_button = (By.ID, 'back-to-products')
 
     def is_complete_header_text_correct(self):
-        return self.is_element_text_correct(self.complete_header, 'Thank you for your order!')
+        return self.is_text_correct(self.complete_header, 'Thank you for your order!')
 
     def back_home(self):
         self.click_button(self.back_home_button)
