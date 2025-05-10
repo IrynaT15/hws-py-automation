@@ -1,0 +1,24 @@
+{
+  "valid_template": {
+    "firstname": "Bim",
+    "lastname": "Brown",
+    "totalprice": 111,
+    "depositpaid": true,
+    "bookingdates": {
+      "checkin": "2018-01-01",
+      "checkout": "2019-01-01"
+    },
+    "additionalneeds": "Breakfast"
+  },
+  "totalprice null": {
+     "firstname": "Bim",
+     "lastname": "Brown",
+     "totalprice": null,
+     "depositpaid": true,
+     "bookingdates": {
+       "checkin": "2018-01-01",
+       "checkout": "2019-01-01"
+     },
+     "additionalneeds": "Breakfast"
+  }
+}
