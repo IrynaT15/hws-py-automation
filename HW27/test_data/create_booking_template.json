@@ -1,0 +1,20 @@
+{
+  "valid_data": {
+    "firstname": "Iryna",
+    "lastname": "Tain",
+    "totalprice": 500,
+    "depositpaid": true,
+    "bookingdates": {
+      "checkin": "2025-05-10",
+      "checkout": "2025-05-15"
+    },
+    "additionalneeds": "Breakfast"
+  },
+   "invalid_data": {
+    "firstname": "Iryna",
+    "lastname": "Tain",
+    "totalprice": 500,
+    "depositpaid": true,
+    "additionalneeds": "Breakfast"
+  }
+}
