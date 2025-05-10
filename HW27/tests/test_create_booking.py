@@ -13,8 +13,8 @@ def test_create_booking_fails_with_missing_mandatory_data(read_config, read_cbt)
     send_request(
         "POST", f"{read_config['URL']}/booking",
         headers={
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
         },
         json=read_cbt["invalid_data"],
         status_code=500

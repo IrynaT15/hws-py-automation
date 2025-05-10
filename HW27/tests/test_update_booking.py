@@ -26,7 +26,9 @@ def test_update_fails_with_totalprice_none(read_config, read_cbt, read_ubt):
     auth_token = get_auth_token(read_config)
     send_request(
         "PUT", f"{read_config['URL']}/booking/{booking['bookingid']}",
-        headers={'Content-Type': 'application/json', 'Accept': 'application/json', "Cookie": f"token={auth_token}"},
+        headers={'Content-Type': 'application/json',
+                 'Accept': 'application/json',
+                 "Cookie": f"token={auth_token}"},
         json=read_ubt["totalprice null"],
         status_code=400
     )
@@ -38,7 +40,9 @@ def test_update_booking_response_schema(read_config, read_cbt, read_schema, read
     auth_token = get_auth_token(read_config)
     response = send_request(
         "PUT", f"{read_config['URL']}/booking/{booking['bookingid']}",
-        headers={'Content-Type': 'application/json', 'Accept': 'application/json', "Cookie": f"token={auth_token}"},
+        headers={'Content-Type': 'application/json',
+                 'Accept': 'application/json',
+                 "Cookie": f"token={auth_token}"},
         json=read_ubt["valid_template"]
     )
     validate_response_schema(response.json(), schema)

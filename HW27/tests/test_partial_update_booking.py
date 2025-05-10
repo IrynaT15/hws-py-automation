@@ -15,8 +15,8 @@ def test_successful_patch_update_fn_ln(read_config, read_cbt):
         "Cookie": f"token={auth_token}"
     }
     payload = {
-        "firstname" : "James",
-        "lastname" : "Brown"
+        "firstname": "James",
+        "lastname": "Brown"
     }
 
     response = send_request("PATCH", url, headers=headers, json=payload)
@@ -36,6 +36,6 @@ def test_patch_update_fails_for_not_authorized_user(read_config, read_cbt):
     send_request(
         "PATCH", f"{read_config['URL']}/booking/{booking['bookingid']}",
         headers={"Content-Type": "application/json", "Accept": "application/json"},
-        json={"firstname" : "James", "lastname" : "Brown"},
+        json={"firstname": "James", "lastname": "Brown"},
         status_code=403
     )

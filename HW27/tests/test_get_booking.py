@@ -5,6 +5,7 @@ from ..helper.send_request import send_request
 from ..helper.assert_json_response import assert_json_response
 from ..helper.validate_response_schema import validate_response_schema
 
+
 def test_successful_get_booking(read_config, read_cbt):
     booking = create_booking(read_config, read_cbt["valid_data"])
     response = send_request(
@@ -16,7 +17,7 @@ def test_successful_get_booking(read_config, read_cbt):
 def test_get_booking_fails_for_deleted_id(read_config, read_cbt):
     booking = create_booking(read_config, read_cbt["valid_data"])
     auth_token = get_auth_token(read_config)
-    delete_booking(read_config, f'{booking["bookingid"]}', auth_token)
+    delete_booking(read_config, str(booking["bookingid"]), auth_token)
     send_request(
         "GET", f"{read_config['URL']}/booking/{booking['bookingid']}",
         headers={"Accept": "application/json"},
