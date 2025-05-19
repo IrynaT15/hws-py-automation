@@ -8,6 +8,4 @@ RUN apt-get update && \
 RUN python3.11 -m venv /opt/venv
 ENV PATH="/opt/venv/bin:$PATH"
 
-
-RUN pip3 install --upgrade pip setuptools && \
-    pip3 install pytest
+RUN pip3 install --upgrade pip setuptools
